@@ -1,12 +1,14 @@
 import React from 'react';
-import './App.css';
-import Header from './components/header/Header.jsx';
+import './index.css';
+import Header from './components/header/Header';
+import Home from './components/home/Home';
 
 function App() {
   return (
-    <>
-    <Header />
-    </>
+    <div>
+      <Header />
+      <Home />
+    </div>
   );
 }
 
