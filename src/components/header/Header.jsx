@@ -45,7 +45,7 @@ const LoadingSpinner = () => (
   </div>
 )
 
-const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => (
+const MobileMenu = ({ isOpen, onClose }) => (
   <motion.div
     className="fixed inset-y-0 right-0 w-1/2 bg-[#1E1E1E] p-4 z-50"
     initial={{ x: "100%" }}
