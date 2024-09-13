@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { Menu, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Logo = () => (
   <a href="index.html" className="text-2xl font-bold uppercase text-white">
     Charan
   </a>
-)
+);
 
 const NavItem = ({ href, children }) => (
   <li className="w-full">
@@ -14,7 +13,7 @@ const NavItem = ({ href, children }) => (
       {children}
     </a>
   </li>
-)
+);
 
 const DownloadButton = () => (
   <a
@@ -24,33 +23,13 @@ const DownloadButton = () => (
   >
     Download CV
   </a>
-)
-
-const LoadingSpinner = () => (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <motion.div
-      className="relative w-16 h-16"
-      animate={{ rotate: 360 }}
-      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-    >
-      <motion.div className="absolute inset-0 border-4 border-white rounded-full" />
-      <motion.div
-        className="absolute inset-1 border-4 border-orange-500 rounded-full"
-        style={{ borderRightColor: 'transparent', borderBottomColor: 'transparent' }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}
-      />
-      <motion.div className="absolute inset-3 bg-white rounded-full" />
-    </motion.div>
-  </div>
-)
+);
 
 const MobileMenu = ({ isOpen, onClose }) => (
-  <motion.div
-    className="fixed inset-y-0 right-0 w-1/2 bg-[#1E1E1E] p-4 z-50"
-    initial={{ x: "100%" }}
-    animate={{ x: isOpen ? 0 : "100%" }}
-    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+  <div
+    className={`fixed inset-y-0 right-0 w-1/2  bg-[#1E1E1E] p-4 transform ${
+      isOpen ? 'translate-x-0' : 'translate-x-full'
+    } transition-transform duration-300 ease-in-out md:hidden z-50`}
   >
     <button onClick={onClose} className="absolute top-4 right-4 text-white z-50">
       <X className="h-6 w-6" />
@@ -70,20 +49,11 @@ const MobileMenu = ({ isOpen, onClose }) => (
         <DownloadButton />
       </div>
     </nav>
-  </motion.div>
-)
+  </div>
+);
 
-function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-
-  const handleOpenMobileMenu = () => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-      setIsMobileMenuOpen(true)
-    }, 1500) // Show loading for 1.5 seconds
-  }
+export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header className="bg-[#1E1E1E] text-white py-4">
@@ -105,7 +75,7 @@ function Header() {
             <DownloadButton />
           </div>
           <button
-            onClick={handleOpenMobileMenu}
+            onClick={() => setIsMobileMenuOpen(true)}
             className="md:hidden text-white"
           >
             <Menu className="h-6 w-6" />
@@ -113,12 +83,7 @@ function Header() {
           </button>
         </div>
       </div>
-      <AnimatePresence>
-        {isLoading && <LoadingSpinner />}
-      </AnimatePresence>
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
     </header>
-  )
+  );
 }
-
-export default Header
