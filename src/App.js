@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Header from './components/header/Header'
 import Home from './components/home/Home'
 import About from './components/about/About'
+import Service from './components/service/Service'
 
 const LoadingScreen = () => (
   <div className="fixed inset-0 bg-[#1E1E1E] flex items-center justify-center z-50">
@@ -71,6 +72,7 @@ export default function App() {
         <Header />
         <Home />
         <About />
+        <Service />
       </motion.div>
     </div>
   )
