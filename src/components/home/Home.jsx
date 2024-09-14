@@ -15,8 +15,8 @@ function HomePage() {
       setTimeout(() => {
         setJobTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
         setIsTransitioning(false);
-      }, 2000);
-    }, 2000);
+      }, 500);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -41,9 +41,9 @@ function HomePage() {
             }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-8xl font-semibold">{jobTitles[jobTitleIndex]}</h2>
+            <h2 className="text-6xl md:text-10xl font-semibold ">{jobTitles[jobTitleIndex]}</h2>
           </motion.div>
-          <p className="mb-6 text-xl">
+          <p className="mb-6 text-xl md:text-xl max-w-xs md:max-w-none">
             I specialize in designing seamless experiences for web applications as a web developer, focusing on user-friendly and aesthetically pleasing designs. My work involves collaborating with cross-functional teams to refine and implement effective design solutions.
           </p>
           <button className="bg-orange-500 text-white text-lg px-10 py-4 rounded-md font-semibold hover:bg-orange-600 transition-colors">
@@ -92,4 +92,4 @@ function SocialIcon({ href, icon }) {
   );
 }
 
-export default HomePage
+export default HomePage;
