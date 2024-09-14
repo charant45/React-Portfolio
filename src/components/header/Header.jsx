@@ -9,7 +9,7 @@ const Logo = () => (
 
 const NavItem = ({ href, children }) => (
   <li className="w-full">
-    <a href={href} className="block py-2 px-4 text-white hover:bg-gray-700 transition-colors text-lg font-bold">
+    <a href={href} className="block py-2 px-4 text-white hover:bg-orange-400 transition-colors text-lg font-bold rounded-sm">
       {children}
     </a>
   </li>
@@ -19,7 +19,7 @@ const DownloadButton = () => (
   <a
     href="https://drive.google.com/file/d/1iQt8jrrcDmIDp28tFzIIh0jsAROGhZh0/view?usp=sharing"
     download
-    className="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded transition-colors text-center w-full md:w-auto font-bold"
+    className="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded transition-colors text-center w-full md:w-auto font-bold font-2xl"
   >
     Download CV
   </a>
@@ -39,8 +39,8 @@ const MobileMenu = ({ isOpen, onClose }) => (
       <ul className="space-y-2 list-none p-0">
         <NavItem href="#home">Home</NavItem>
         <NavItem href="#about">About</NavItem>
-        <NavItem href="#skills">Skills</NavItem>
         <NavItem href="#services">Services</NavItem>
+        <NavItem href="#skills">Skills</NavItem>
         <NavItem href="#projects">Projects</NavItem>
         <NavItem href="#testimonials">Testimonials</NavItem>
         <NavItem href="#contact">Contact</NavItem>
@@ -64,8 +64,8 @@ export default function Header() {
             <ul className="flex space-x-4 list-none">
               <NavItem href="#home">Home</NavItem>
               <NavItem href="#about">About</NavItem>
-              <NavItem href="#skills">Skills</NavItem>
               <NavItem href="#services">Services</NavItem>
+              <NavItem href="#skills">Skills</NavItem>
               <NavItem href="#projects">Projects</NavItem>
               <NavItem href="#testimonials">Testimonials</NavItem>
               <NavItem href="#contact">Contact</NavItem>

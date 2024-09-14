@@ -27,7 +27,7 @@ export default function HomePage() {
           <p className="mb-6 text-xl">
             I specialize in designing seamless experiences for web applications as a web developer, focusing on user-friendly and aesthetically pleasing designs. My work involves collaborating with cross-functional teams to refine and implement effective design solutions.
           </p>
-          <button className="bg-[#FD6F00] text-white text-lg px-10 py-4 rounded-md font-semibold hover:bg-[#E65F00] transition-colors">
+          <button className="bg-orange-500 text-white text-lg px-10 py-4 rounded-md font-semibold hover:bg-orange-600 transition-colors">
             Hire Me
           </button>
         </div>
