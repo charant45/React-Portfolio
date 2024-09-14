@@ -57,7 +57,7 @@ function HomePage() {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="w-96 h-96 rounded-full overflow-hidden mb-6 bg-gradient-to-r from-[#1E1E1E] via-[#1E1E1E] to-[#1E1E1E] shadow-lg"
+            className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden mb-6 bg-gradient-to-r from-[#1E1E1E] via-[#1E1E1E] to-[#1E1E1E] shadow-lg"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
