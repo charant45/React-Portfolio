@@ -41,7 +41,7 @@ function HomePage() {
             }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-6xl md:text-10xl font-semibold ">{jobTitles[jobTitleIndex]}</h2>
+            <h2 className="text-6xl md:text-10xl font-bold ">{jobTitles[jobTitleIndex]}</h2>
           </motion.div>
           <p className="mb-6 text-xl md:text-xl max-w-xs md:max-w-none">
             I specialize in designing seamless experiences for web applications as a web developer, focusing on user-friendly and aesthetically pleasing designs. My work involves collaborating with cross-functional teams to refine and implement effective design solutions.
