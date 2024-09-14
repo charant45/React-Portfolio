@@ -1,34 +1,67 @@
-"use client"
+import React, { useState, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+const AboutContent = () => (
+  <p className="text-lg md:text-xl mb-12 font-semibold">
+    Design is my passion, and harmony is my compass. I navigate complex challenges by building strong foundations and orchestrating seamless user journeys. Timing is everything in design, and I believe in creating experiences that leave a lasting impact. My expertise extends into web development, where I blend aesthetic design with robust functionality to craft dynamic and engaging websites. I am skilled in modern web technologies, including responsive design principles, and ensure that every project not only looks stunning but also performs flawlessly across all devices. From optimizing user interfaces for maximum usability to integrating powerful backend solutions, I strive to create web applications that are both visually appealing and highly effective. My approach involves collaborating closely with clients to understand their vision and translate it into innovative, user-centric solutions that drive success.
+  </p>
+);
 
-export default function About() {
+function About() {
   const [skills, setSkills] = useState({
     'UX': 90,
     'Website Design': 88,
     'App Design': 85,
-    'Graphic Design': 90
-  })
+    'Graphic Design': 90,
+  });
+  
+  const [isDragging, setIsDragging] = useState(false);
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+  });
 
-  const [isDragging, setIsDragging] = useState(false)
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
+    }
+  }, [controls, inView]);
 
   const handleSliderChange = (skill, value) => {
     setSkills(prevSkills => ({
       ...prevSkills,
-      [skill]: value
-    }))
-  }
+      [skill]: value,
+    }));
+  };
+
+  const variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
     <section id="about" className="bg-[#1E1E1E] min-h-screen py-6 flex items-center justify-center">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+      <motion.div 
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={variants}
+        className="container mx-auto px-6 md:px-12 max-w-6xl"
+      >
         <div className="flex flex-col items-center text-center">
           <div className="text-white">
             <h2 className="text-6xl md:text-7xl font-bold mb-14 text-white">About Me</h2>
-            <p className="text-lg md:text-xl mb-12 font-semibold">
-              Design is my passion, and harmony is my compass. I navigate complex challenges by building strong foundations and orchestrating seamless user journeys. Timing is everything in design, and I believe in creating experiences that leave a lasting impact. My expertise extends into web development, where I blend aesthetic design with robust functionality to craft dynamic and engaging websites. I am skilled in modern web technologies, including responsive design principles, and ensure that every project not only looks stunning but also performs flawlessly across all devices. From optimizing user interfaces for maximum usability to integrating powerful backend solutions, I strive to create web applications that are both visually appealing and highly effective. My approach involves collaborating closely with clients to understand their vision and translate it into innovative, user-centric solutions that drive success.
-            </p>
+            <AboutContent />
             <div className="space-y-6 max-w-3xl mx-auto">
               {Object.entries(skills).map(([skill, value]) => (
                 <div key={skill} className="relative">
@@ -71,7 +104,9 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
-  )
+  );
 }
+
+export default About;

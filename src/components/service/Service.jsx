@@ -1,20 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
+
 import ui from "../../assests/ui.svg";
 import web from "../../assests/web.svg";
 import app from "../../assests/app.svg";
 import graphic from "../../assests/graphic.svg";
 
-const ServiceCard = ({ icon, title, description, index, resetAnimation }) => {
+const ServiceCard = ({ icon, title, description, index }) => {
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
 
   useEffect(() => {
-    if (isInView || resetAnimation) {
+    if (isInView) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
-  }, [controls, isInView, resetAnimation]);
+  }, [controls, isInView]);
 
   return (
     <motion.div
@@ -41,44 +44,22 @@ const ServiceCard = ({ icon, title, description, index, resetAnimation }) => {
 function Service() {
   const controls = useAnimation();
   const ref = useRef(null);
-  const [resetAnimation] = useState(false);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
 
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [controls, isInView]);
 
   const services = [
-    {
-      icon: ui,
-      title: "UX Design",
-      description: "We create intuitive and engaging user experiences that delight your customers and keep them coming back for more."
-    },
-    {
-      icon: graphic,
-      title: "Graphic Design",
-      description: "Our graphic design services bring your brand to life with stunning visuals that capture attention and communicate your message effectively."
-    },
-    {
-      icon: app,
-      title: "App Design",
-      description: "We design beautiful and functional mobile applications that provide seamless experiences across all devices and platforms."
-    },
-    {
-      icon: web,
-      title: "Website Design",
-      description: "Our website designs are not only visually appealing but also optimized for performance, accessibility, and search engine visibility."
-    }
+    { icon: ui, title: "UX Design", description: "We create intuitive and engaging user experiences that delight your customers and keep them coming back for more." },
+    { icon: graphic, title: "Graphic Design", description: "Our graphic design services bring your brand to life with stunning visuals that capture attention and communicate your message effectively." },
+    { icon: app, title: "App Design", description: "We design beautiful and functional mobile applications that provide seamless experiences across all devices and platforms." },
+    { icon: web, title: "Website Design", description: "Our website designs are not only visually appealing but also optimized for performance, accessibility, and search engine visibility." }
   ];
-
-  // const handleInteraction = () => {
-  //   setResetAnimation(true);
-  //   setTimeout(() => {
-  //     setResetAnimation(false);
-  //   }, 1000);
-  // };
 
   return (
     <motion.section
@@ -87,20 +68,20 @@ function Service() {
       animate={controls}
       variants={{
         hidden: { opacity: 0 },
-        visible: { 
-          opacity: 1, 
-          transition: { 
-            duration: 0.5, 
+        visible: {
+          opacity: 1,
+          transition: {
+            duration: 0.5,
             when: "beforeChildren",
             staggerChildren: 0.1
-          } 
+          }
         }
       }}
-      id="services" 
+      id="services"
       className="bg-[#1E1E1E] min-h-screen py-16"
     >
       <div className="container mx-auto px-4">
-        <motion.h2 
+        <motion.h2
           variants={{
             hidden: { opacity: 0, y: -50 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
@@ -109,7 +90,8 @@ function Service() {
         >
           Services
         </motion.h2>
-        <motion.p 
+
+        <motion.p
           variants={{
             hidden: { opacity: 0, y: -30 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } }
@@ -118,9 +100,10 @@ function Service() {
         >
           We offer a comprehensive suite of design services tailored to elevate your brand and captivate your audience. Our expertise spans from crafting intuitive user experiences to creating visually stunning designs across various platforms.
         </motion.p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
           {services.map((service, index) => (
-            <ServiceCard key={index} {...service} index={index} resetAnimation={resetAnimation} />
+            <ServiceCard key={index} {...service} index={index} />
           ))}
         </div>
       </div>
