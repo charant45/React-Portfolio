@@ -61,7 +61,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-[#1E1E1E] min-h-screen">
+    <div className="bg-[#1E1E1E] min-h-screen flex flex-col">
       <AnimatePresence>
         {isLoading && <LoadingScreen />}
       </AnimatePresence>
@@ -70,12 +70,15 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
+          className="flex-1"
         >
           <Header />
-          <Home />
-          <About />
-          <Service />
-          <Skills />
+          <main className="flex-1">
+            <Home />
+            <About />
+            <Service />
+            <Skills />
+          </main>
         </motion.div>
       )}
     </div>
