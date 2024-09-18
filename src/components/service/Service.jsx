@@ -96,7 +96,7 @@ function Service() {
             hidden: { opacity: 0, y: -30 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } }
           }}
-          className="font-semibold text-xl text-white text-center max-w-3xl mx-auto mb-12"
+          className=" text-xl text-white text-center max-w-3xl mx-auto mb-12"
         >
           We offer a comprehensive suite of design services tailored to elevate your brand and captivate your audience. Our expertise spans from crafting intuitive user experiences to creating visually stunning designs across various platforms.
         </motion.p>

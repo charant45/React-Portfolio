@@ -3,7 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const AboutContent = () => (
-  <p className="text-lg md:text-xl mb-12 font-semibold">
+  <p className="mb-6 text-xl md:text-xl max-w-xs md:max-w-none">
     Design is my passion, and harmony is my compass. I navigate complex challenges by building strong foundations and orchestrating seamless user journeys. Timing is everything in design, and I believe in creating experiences that leave a lasting impact. My expertise extends into web development, where I blend aesthetic design with robust functionality to craft dynamic and engaging websites. I am skilled in modern web technologies, including responsive design principles, and ensure that every project not only looks stunning but also performs flawlessly across all devices. From optimizing user interfaces for maximum usability to integrating powerful backend solutions, I strive to create web applications that are both visually appealing and highly effective. My approach involves collaborating closely with clients to understand their vision and translate it into innovative, user-centric solutions that drive success.
   </p>
 );
