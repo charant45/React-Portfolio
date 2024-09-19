@@ -76,8 +76,8 @@ export default function App() {
           <main className="flex-1">
             <Home />
             <About />
-            <Service />
             <Skills />
+            <Service />
           </main>
         </motion.div>
       )}
