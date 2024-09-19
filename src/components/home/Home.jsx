@@ -21,8 +21,8 @@ function HomePage() {
   }, []);
 
   return (
-    <div id="home" className="bg-[#1E1E1E] min-h-screen text-white flex items-center justify-center pt-20 md:pt-24">
-      <div className="w-full max-w-8xl px-6 md:px-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
+    <div id="home" className="bg-[#1E1E1E] min-h-screen text-white flex items-center justify-center">
+      <div className="w-full max-w-8xl px-6 md:px-12 flex flex-col md:flex-row items-center justify-center  text-left ml-6 md:ml-16">
         <motion.div
           className="md:w-1/2 mb-6 md:mb-0 flex flex-col items-center md:items-start"
           initial={{ x: -100, opacity: 0 }}

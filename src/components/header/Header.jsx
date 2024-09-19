@@ -44,8 +44,8 @@ const MobileMenu = ({ isOpen, onClose, activeSection }) => (
       <ul className="space-y-2 list-none p-0">
         <NavItem href="#home" isActive={activeSection === 'home'}>Home</NavItem>
         <NavItem href="#about" isActive={activeSection === 'about'}>About</NavItem>
-        <NavItem href="#services" isActive={activeSection === 'services'}>Services</NavItem>
         <NavItem href="#skills" isActive={activeSection === 'skills'}>Skills</NavItem>
+        <NavItem href="#services" isActive={activeSection === 'services'}>Services</NavItem>
         <NavItem href="#projects" isActive={activeSection === 'projects'}>Projects</NavItem>
         <NavItem href="#testimonials" isActive={activeSection === 'testimonials'}>Testimonials</NavItem>
         <NavItem href="#contact" isActive={activeSection === 'contact'}>Contact</NavItem>
@@ -90,8 +90,8 @@ export default function Header() {
             <ul className="flex space-x-4 list-none">
               <NavItem href="#home" isActive={activeSection === 'home'}>Home</NavItem>
               <NavItem href="#about" isActive={activeSection === 'about'}>About</NavItem>
-              <NavItem href="#services" isActive={activeSection === 'services'}>Services</NavItem>
               <NavItem href="#skills" isActive={activeSection === 'skills'}>Skills</NavItem>
+              <NavItem href="#services" isActive={activeSection === 'services'}>Services</NavItem>
               <NavItem href="#projects" isActive={activeSection === 'projects'}>Projects</NavItem>
               <NavItem href="#certificates" isActive={activeSection === 'certificates'}>Certificates</NavItem>
               <NavItem href="#contact" isActive={activeSection === 'contact'}>Contact</NavItem>
