@@ -21,10 +21,10 @@ function HomePage() {
   }, []);
 
   return (
-    <div id="home" className="bg-[#1E1E1E] min-h-screen text-white flex items-center justify-center">
-      <div className="w-full max-w-8xl px-6 md:px-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left ml-6 md:ml-16">
+    <div id="home" className="bg-[#1E1E1E] min-h-screen text-white flex items-center justify-center pt-20 md:pt-24">
+      <div className="w-full max-w-8xl px-6 md:px-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
         <motion.div
-          className="md:w-1/2 mb-6 md:mb-0 flex flex-col items-center md:items-start md:ml-16"
+          className="md:w-1/2 mb-6 md:mb-0 flex flex-col items-center md:items-start"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -41,15 +41,18 @@ function HomePage() {
             }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-6xl md:text-10xl font-bold ">{jobTitles[jobTitleIndex]}</h2>
+            <h2 className="text-3xl md:text-6xl font-bold">
+              {jobTitles[jobTitleIndex]}
+            </h2>
           </motion.div>
-          <p className="mb-6 text-xl md:text-xl max-w-xs md:max-w-none">
+          <p className="mb-6 text-lg md:text-xl max-w-xs md:max-w-none">
             I specialize in designing seamless experiences for web applications as a web developer, focusing on user-friendly and aesthetically pleasing designs. My work involves collaborating with cross-functional teams to refine and implement effective design solutions.
           </p>
           <button className="bg-orange-500 text-white text-lg px-10 py-4 rounded-md font-semibold hover:bg-orange-600 transition-colors">
             Hire Me
           </button>
         </motion.div>
+
         <motion.div
           className="md:w-1/2 flex flex-col items-center"
           initial={{ x: 100, opacity: 0 }}
@@ -67,6 +70,7 @@ function HomePage() {
               className="w-full h-full object-cover"
             />
           </motion.div>
+
           <div className="flex space-x-6">
             <SocialIcon href="https://twitter.com" icon={<Twitter size={30} />} />
             <SocialIcon href="https://facebook.com" icon={<Facebook size={30} />} />
