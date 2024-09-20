@@ -88,7 +88,6 @@ export default function Component() {
   }, [startIndex, projectsPerPage]);
 
   const nextProjects = () => {
-    
     if (startIndex + projectsPerPage >= projects.length) {
       setStartIndex(0); 
     } else {
@@ -97,9 +96,7 @@ export default function Component() {
   };
 
   const prevProjects = () => {
-    
     if (startIndex === 0) {
-      
       const remainder = projects.length % projectsPerPage;
       setStartIndex(remainder === 0 ? projects.length - projectsPerPage : projects.length - remainder);
     } else {
@@ -136,7 +133,7 @@ export default function Component() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center w-full sm:w-[45%] md:w-[30%] min-w-[300px] scroll-snap-align-start"
+              className="flex flex-col items-center w-full sm:w-[90%] md:w-[30%] min-w-[300px] scroll-snap-align-start"
             >
               <div className="relative group w-full h-[200px] sm:h-[250px] md:h-[300px]">
                 <img 
