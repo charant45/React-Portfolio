@@ -121,7 +121,7 @@ export default function Component() {
   }
 
   return (
-    <div id="projects" className="min-h-screen bg-gradient-to-b from-[#1E1E1E] to-[#2D2D2D] text-white p-4 md:p-8 overflow-hidden">
+    <div id="projects" className="min-h-screen bg-gradient-to-b bg-[#1E1E1E] text-white p-4 md:p-8 overflow-hidden">
       <motion.div
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
