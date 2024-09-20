@@ -63,7 +63,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'skills', 'projects', 'testimonials', 'contact'];
+      const sections = ['home', 'about', 'skills','services','projects', 'testimonials', 'contact'];
       const scrollPos = window.pageYOffset;
 
       for (let i = sections.length - 1; i >= 0; i--) {

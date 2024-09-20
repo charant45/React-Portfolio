@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import About from './components/about/About';
 import Service from './components/service/Service';
 import Skills from './components/skills/Skill';
+import Project from './components/projects/Project';
 
 const LoadingScreen = () => (
   <div className="fixed inset-0 bg-[#1E1E1E] flex items-center justify-center z-50">
@@ -78,6 +79,7 @@ export default function App() {
             <About />
             <Skills />
             <Service />
+            <Project />
           </main>
         </motion.div>
       )}
