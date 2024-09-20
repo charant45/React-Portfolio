@@ -47,7 +47,7 @@ const MobileMenu = ({ isOpen, onClose, activeSection }) => (
         <NavItem href="#skills" isActive={activeSection === 'skills'}>Skills</NavItem>
         <NavItem href="#services" isActive={activeSection === 'services'}>Services</NavItem>
         <NavItem href="#projects" isActive={activeSection === 'projects'}>Projects</NavItem>
-        <NavItem href="#testimonials" isActive={activeSection === 'testimonials'}>Testimonials</NavItem>
+        <NavItem href="#certificates" isActive={activeSection === 'certificates'}>Certificates</NavItem>
         <NavItem href="#contact" isActive={activeSection === 'contact'}>Contact</NavItem>
       </ul>
       <div className="mt-4">
@@ -63,7 +63,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills','services','projects', 'testimonials', 'contact'];
+      const sections = ['home', 'about', 'skills','services','projects', 'certificates', 'contact'];
       const scrollPos = window.pageYOffset;
 
       for (let i = sections.length - 1; i >= 0; i--) {
