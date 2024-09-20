@@ -16,7 +16,7 @@ const certificates = [
 
 function Certificates() {
   return (
-    <div id="home" className="bg-[#1E1E1E] min-h-screen text-white flex flex-col items-center justify-start py-10 px-4 sm:py-16 md:py-20">
+    <div id="certificates" className="bg-[#1E1E1E] min-h-screen text-white flex flex-col items-center justify-start py-10 px-4 sm:py-16 md:py-20">
       <motion.h2 
         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 sm:mb-10 md:mb-14 text-center"
         initial={{ opacity: 0, y: -50 }}
