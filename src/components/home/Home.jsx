@@ -62,8 +62,8 @@ function HomePage() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <Typography variant="h4" sx={{ mb: 1 }}>Hi, I am</Typography>
-          <Typography variant="h2" sx={{ fontWeight: 'bold', mb: 2, color: '#FD6F00' }}>Charan T</Typography>
+          <Typography variant="h5" sx={{ mb: 1 }}>Hi, I am</Typography>
+          <Typography variant="h2" sx={{ fontWeight: 'bold', mb: 2, color: '#FD6F00', fontSize: '2.2rem' }}>Charan T</Typography>
           <motion.div
             style={{ minHeight: '4rem', marginBottom: '1.5rem' }}
             key={isTransitioning ? jobTitleIndex : undefined}
@@ -71,7 +71,7 @@ function HomePage() {
             animate={{ y: isTransitioning ? -20 : 0, opacity: isTransitioning ? 0 : 1 }}
             transition={{ duration: 0.5 }}
           >
-            <Typography variant="h3" sx={{ fontWeight: 'bold' }}>{jobTitles[jobTitleIndex]}</Typography>
+            <Typography variant="h3" sx={{ fontWeight: 'bold', fontSize: { xs: '2rem', md: '3rem' } }}>{jobTitles[jobTitleIndex]}</Typography>
           </motion.div>
           <Typography variant="body1" sx={{ mb: 3, fontSize: { xs: '1rem', md: '1.25rem' }, maxWidth: { xs: '300px', md: 'none' }, mx: 'auto' }}>
             I specialize in designing seamless experiences for web applications as a web developer, focusing on user-friendly and aesthetically pleasing designs. My work involves collaborating with cross-functional teams to refine and implement effective design solutions.
@@ -89,8 +89,9 @@ function HomePage() {
         >
           <motion.div
             style={{
-              width: { xs: '80%', md: '22rem' },
-              height: { xs: '80%', md: '22rem' },
+              width: '70%',
+              maxWidth: '24rem',
+              height: 'auto',
               borderRadius: '50%',
               overflow: 'hidden',
               marginBottom: '1.5rem',
