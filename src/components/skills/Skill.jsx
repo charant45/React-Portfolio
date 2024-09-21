@@ -119,7 +119,7 @@ const Skills = () => {
         className="text-6xl md:text-7xl font-bold mb-14 text-white"
         variants={itemVariants}
       >
-        Skills
+        My <span className="text-orange-500">Skills</span>
       </motion.h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 p-6">
         {skills.map(skill => (
