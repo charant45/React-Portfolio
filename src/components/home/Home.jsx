@@ -89,8 +89,8 @@ function HomePage() {
         >
           <motion.div
             style={{
-              width: '25rem',
-              height: '25rem',
+              width: { xs: '80%', md: '22rem' },
+              height: { xs: '80%', md: '22rem' },
               borderRadius: '50%',
               overflow: 'hidden',
               marginBottom: '1.5rem',
