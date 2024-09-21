@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Twitter, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Profile from "../../assests/Group 2.svg";
 
@@ -72,10 +72,9 @@ function HomePage() {
           </motion.div>
 
           <div className="flex space-x-6">
-            <SocialIcon href="https://twitter.com" icon={<Twitter size={30} />} />
-            <SocialIcon href="https://facebook.com" icon={<Facebook size={30} />} />
-            <SocialIcon href="https://linkedin.com" icon={<Linkedin size={30} />} />
-            <SocialIcon href="https://instagram.com" icon={<Instagram size={30} />} />
+            <SocialIcon href="https://github.com/charant45" icon={<Github size={30} />} />
+            <SocialIcon href="https://www.linkedin.com/in/tcharan/" icon={<Linkedin size={30} />} />
+            <SocialIcon href="mailto:charan4567890@gmail.com" icon={<Mail size={30} />} />
           </div>
         </motion.div>
       </div>
