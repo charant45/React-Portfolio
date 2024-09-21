@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Typography, Box, Snackbar, Alert, InputAdornment } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Snackbar, Alert, InputAdornment, GlobalStyles } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as z from 'zod';
 import { Person, Email, Phone, Subject, Message } from '@mui/icons-material';
@@ -43,10 +43,6 @@ const theme = createTheme({
           },
           '& .MuiInputAdornment-root .MuiSvgIcon-root': {
             color: 'rgba(0, 0, 0, 0.7)',
-          },
-          '&:-webkit-autofill': {
-            WebkitBoxShadow: '0 0 0 100px #ffffff inset',
-            WebkitTextFillColor: '#000000',
           },
         },
       },
@@ -140,6 +136,26 @@ export default function ContactForm() {
 
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles
+        styles={{
+          'input:-webkit-autofill': {
+            '-webkit-box-shadow': '0 0 0 1000px #ffffff inset',
+            '-webkit-text-fill-color': '#000000 !important',
+          },
+          'input:-webkit-autofill:hover': {
+            '-webkit-box-shadow': '0 0 0 1000px #ffffff inset',
+            '-webkit-text-fill-color': '#000000 !important',
+          },
+          'input:-webkit-autofill:focus': {
+            '-webkit-box-shadow': '0 0 0 1000px #ffffff inset',
+            '-webkit-text-fill-color': '#000000 !important',
+          },
+          'input:-webkit-autofill:active': {
+            '-webkit-box-shadow': '0 0 0 1000px #ffffff inset',
+            '-webkit-text-fill-color': '#000000 !important',
+          },
+        }}
+      />
       <Box id="contact" sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 8 }}>
         <Container maxWidth="sm">
           <Box sx={{
@@ -215,23 +231,22 @@ export default function ContactForm() {
                   '&:hover': {
                     bgcolor: '#ea580c',
                     transform: 'none',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
                   },
-                  transition: 'box-shadow 0.3s ease-in-out',
                 }}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Submitting...' : 'Send Message'}
+                {isSubmitting ? 'Submitting...' : 'Submit'}
               </Button>
             </Box>
           </Box>
         </Container>
+        <Snackbar open={snackbar.open} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+          <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </Box>
-      <Snackbar open={snackbar.open} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
     </ThemeProvider>
   );
 }

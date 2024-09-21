@@ -9,6 +9,7 @@ import Skills from './components/skills/Skill';
 import Project from './components/projects/Project';
 import Certificates from './components/certificates/Certificates';
 import Contact from './components/contact/Contact';
+import Footer from './components/footer/Footer';
 
 const LoadingScreen = () => (
   <div className="fixed inset-0 bg-[#1E1E1E] flex items-center justify-center z-50">
@@ -85,6 +86,7 @@ export default function App() {
             <Certificates />
             <Contact />
           </main>
+          <Footer />
         </motion.div>
       )}
     </div>
