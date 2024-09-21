@@ -11,43 +11,6 @@ const theme = createTheme({
     background: { default: '#1E1E1E', paper: '#2E2E2E' },
     text: { primary: '#ffffff' },
   },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          backgroundColor: '#f97316',
-          '&:hover': { backgroundColor: '#ea580c' },
-          color: '#ffffff',
-        },
-      },
-    },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          backgroundColor: '#ffffff',
-          borderRadius: '4px',
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.23)' },
-            '&:hover fieldset': { borderColor: 'rgba(0, 0, 0, 0.5)' },
-            '&.Mui-focused fieldset': { borderColor: '#f97316' },
-          },
-          '& .MuiInputLabel-root': {
-            color: '#ffffff',
-            fontSize: '1.2rem',
-            transform: 'translate(8px, -16px)',
-            '&.Mui-focused': { color: '#f97316' },
-          },
-          '& .MuiInputBase-input': {
-            color: '#000000',
-            '&::placeholder': { color: 'rgba(0, 0, 0, 0.5)' },
-          },
-          '& .MuiInputAdornment-root .MuiSvgIcon-root': {
-            color: 'rgba(0, 0, 0, 0.7)',
-          },
-        },
-      },
-    },
-  },
 });
 
 const formSchema = z.object({
@@ -142,18 +105,6 @@ export default function ContactForm() {
             '-webkit-box-shadow': '0 0 0 1000px #ffffff inset',
             '-webkit-text-fill-color': '#000000 !important',
           },
-          'input:-webkit-autofill:hover': {
-            '-webkit-box-shadow': '0 0 0 1000px #ffffff inset',
-            '-webkit-text-fill-color': '#000000 !important',
-          },
-          'input:-webkit-autofill:focus': {
-            '-webkit-box-shadow': '0 0 0 1000px #ffffff inset',
-            '-webkit-text-fill-color': '#000000 !important',
-          },
-          'input:-webkit-autofill:active': {
-            '-webkit-box-shadow': '0 0 0 1000px #ffffff inset',
-            '-webkit-text-fill-color': '#000000 !important',
-          },
         }}
       />
       <Box id="contact" sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 8 }}>
@@ -186,7 +137,7 @@ export default function ContactForm() {
               {Object.entries(inputProps).map(([key, { icon, label, placeholder }]) => (
                 <TextField
                   key={key}
-                  margin="normal"
+                  margin="dense"
                   required
                   fullWidth
                   id={key}
@@ -206,12 +157,16 @@ export default function ContactForm() {
                   }}
                   sx={{
                     mb: 2,
+                    '& label.Mui-focused': {
+                      color: '#FD6F00',
+                    },
                     '& .MuiOutlinedInput-root': {
-                      backgroundColor: '#ffffff',
-                      color: '#000000',
-                      '&.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root': {
-                        color: theme.palette.primary.main,
+                      '&.Mui-focused fieldset': {
+                        borderColor: '#FD6F00',
                       },
+                    },
+                    '& .MuiInputAdornment-root': {
+                      marginRight: '8px',
                     },
                   }}
                 />
