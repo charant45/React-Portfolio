@@ -86,7 +86,7 @@ function Service() {
             hidden: { opacity: 0, y: -50 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
           }}
-          className="text-6xl md:text-7xl font-bold text-center text-white mb-12"
+          className="text-6xl md:text-7xl font-bold text-center text-orange-500 mb-12"
         >
           Services
         </motion.h2>
