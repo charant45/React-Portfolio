@@ -60,7 +60,9 @@ function About() {
       >
         <div className="flex flex-col items-center text-center">
           <div className="text-white">
-            <h2 className="text-6xl md:text-7xl font-bold mb-14 text-white">About Me</h2>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-10 lg:mb-14 text-white text-center">
+            About <span className="text-orange-500">Me</span>
+          </h2>
             <AboutContent />
             <div className="space-y-6 max-w-3xl mx-auto">
               {Object.entries(skills).map(([skill, value]) => (
