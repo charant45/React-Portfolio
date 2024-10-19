@@ -21,7 +21,7 @@ const projects = [
     id: 2,
     title: "Spotify Landing Page Design",
     image: Spotify,
-    link: "https://www.figma.com/design/EewmJETho6nHjAhAFAWSJw/Portfolio?node-id=0-1&node-type=canvas&t=4u3REVo9fCe4CXQc-0",
+    link: "https://www.figma.com/design/Hf8A0A8SGnZcdRfaA1jrnj/Spotify-Redesign?node-id=0-1&node-type=canvas&t=YOVgHOeWHXKa7zWa-0",
     role: "UI/UX Designing",
     tech: ["Figma"]
   },
