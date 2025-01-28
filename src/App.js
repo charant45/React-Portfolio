@@ -10,6 +10,7 @@ import Project from './components/projects/Project';
 import Certificates from './components/certificates/Certificates';
 import Contact from './components/contact/Contact';
 import Footer from './components/footer/Footer';
+import { BackgroundBeamsWithCollision } from './components/ui/background-beams-with-collision';
 
 const LoadingScreen = () => (
   <div className="fixed inset-0 bg-[#1E1E1E] flex items-center justify-center z-50">
@@ -65,7 +66,10 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-[#1E1E1E] min-h-screen flex flex-col">
+    <div className="relative bg-[#1E1E1E] min-h-screen overflow-hidden">
+      {/* Background Component */}
+      <BackgroundBeamsWithCollision className="fixed inset-0 z-0" />
+
       <AnimatePresence>
         {isLoading && <LoadingScreen />}
       </AnimatePresence>
@@ -74,7 +78,7 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="flex-1"
+          className="relative z-10 flex flex-col min-h-screen"
         >
           <Header />
           <main className="flex-1">

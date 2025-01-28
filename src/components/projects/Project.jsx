@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import {useEffect, useState} from 'react';
 import { Link as LinkIcon } from 'lucide-react';
 import Crypto from '../../assests/crypto.svg';
-import Spotify from '../../assests/Spotify.svg';
-import Hirewave from '../../assests/hirewave.svg';
+import Fitpluse from '../../assests/Fitpluse.svg';
+import Bullspree from '../../assests/Bullspree.svg';
 import Shoppe from '../../assests/Shoppe.svg';
 import Travel from '../../assests/Travel.svg';
 import Shoesnap from '../../assests/shoesnap.svg';
@@ -19,19 +19,19 @@ const projects = [
   },
   {
     id: 2,
-    title: "Spotify Landing Page Design",
-    image: Spotify,
-    link: "https://www.figma.com/design/EewmJETho6nHjAhAFAWSJw/Portfolio?node-id=0-1&node-type=canvas&t=4u3REVo9fCe4CXQc-0",
+    title: "Fitness App",
+    image: Fitpluse,
+    link: "https://www.figma.com/design/LWEqD7pvO9wpxQQgxRYFPb/FitPluse?node-id=252-2897&p=f&t=StM8uvABynsi8IaA-0",
     role: "UI/UX Designing",
     tech: ["Figma"]
   },
   {
     id: 3,
-    title: "Job Search Portal",
-    image: Hirewave,
-    link: "https://hire-wave-psi.vercel.app/",
-    role: "Web Development",
-    tech: ["React", "Tailwind CSS", "Express", "MongoDB", "Cloudinary"]
+    title: "Bullspree Redesign",
+    image: Bullspree,
+    link: "https://www.figma.com/design/7wTgpQ7eItJRhUNqh3gEPI/Bullspree?node-id=50-613&p=f&t=Y0p7Hv9erqhCZqTX-0",
+    role: "UI/UX Designing",
+    tech: ["Figma"]
   },
   {
     id: 4,
