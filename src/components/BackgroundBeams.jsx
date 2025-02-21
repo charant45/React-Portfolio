@@ -11,8 +11,11 @@ export const BackgroundBeams = () => {
       <div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-orange-500 opacity-[0.15] blur-[80px] md:left-[10%]" />
       <div className="absolute right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[#4f4f4f] opacity-[0.15] blur-[80px] md:right-[10%]" />
 
-      {/* Radial Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1E1E1E] via-transparent to-[#1E1E1E]" />
+      {/* Modified Gradient Overlay - Stronger fade to black at bottom */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1E1E1E]" />
+      
+      {/* Additional bottom fade for smoother transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-[30vh] bg-gradient-to-t from-[#1E1E1E] to-transparent" />
 
       {/* Moving Particles */}
       <Particles />

@@ -12,19 +12,13 @@ const NavItem = ({ href, isActive, children }) => (
   <li>
     <a
       href={href}
-      className={`relative px-4 py-2 text-base font-medium transition-colors ${
+      className={`px-4 py-2 text-base font-medium transition-colors duration-300 ${
         isActive 
           ? 'text-orange-400' 
           : 'text-gray-100 hover:text-orange-400'
       }`}
     >
       {children}
-      {isActive && (
-        <motion.div
-          className="absolute bottom-0 left-0 h-0.5 w-full bg-orange-400"
-          layoutId="underline"
-        />
-      )}
     </a>
   </li>
 );
