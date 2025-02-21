@@ -7,6 +7,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import EmailIcon from "@mui/icons-material/Email"
 import Profile from "../../assests/Group 2.svg"
 import HireMe from "../Hireme"
+import { BackgroundBeams } from '../BackgroundBeams'
 
 
 const jobTitles = ["UI/UX Designer", "Web Developer"]
@@ -41,8 +42,8 @@ export default function HomePage() {
       setTimeout(() => {
         setJobTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length)
         setIsTransitioning(false)
-      }, 500)
-    }, 3000)
+      }, 1000)
+    }, 2000)
     return () => clearInterval(interval)
   }, [])
 
@@ -66,8 +67,16 @@ export default function HomePage() {
   return (
     <Box
       id="home"
-      sx={{ position: "relative", bgcolor: "#1E1E1E", minHeight: "100vh", color: "white", overflow: "hidden" }}
+      sx={{ 
+        position: "relative", 
+        bgcolor: "#1E1E1E", 
+        minHeight: "100vh", 
+        color: "white", 
+        overflow: "hidden"
+      }}
     >
+      <BackgroundBeams />
+
       <Box
         sx={{
           position: "relative",
@@ -77,7 +86,7 @@ export default function HomePage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          pt: { xs: 10, md: 12 },
+          pt: { xs: 15, md: 20 },
         }}
       >
         <Box
@@ -94,10 +103,10 @@ export default function HomePage() {
           }}
         >
           <motion.div
-            style={{ width: "100%", maxWidth: "600px", marginBottom: "1.5rem" , marginTop:"100px"}}
+            style={{ width: "100%", maxWidth: "600px", marginBottom: "1.5rem", marginTop:"100px"}}
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.5 }}
           >
             <Typography variant="h5" sx={{ mb: 1 }}>
               Hi, I am
@@ -110,7 +119,7 @@ export default function HomePage() {
               key={isTransitioning ? jobTitleIndex : undefined}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: isTransitioning ? -20 : 0, opacity: isTransitioning ? 0 : 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.7 }}
             >
               <Typography variant="h3" sx={{ fontWeight: "bold", fontSize: { xs: "2rem", md: "3rem" } }}>
                 {jobTitles[jobTitleIndex]}
@@ -131,7 +140,7 @@ export default function HomePage() {
             style={{ width: "100%", maxWidth: "600px", display: "flex", flexDirection: "column", alignItems: "center" }}
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.5 }}
           >
             <motion.div
               style={{

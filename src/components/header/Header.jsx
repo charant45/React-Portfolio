@@ -111,7 +111,7 @@ export default function Header() {
         isScrolled ? 'bg-[#1E1E1E]/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20 md:h-24">
           <Logo />
           
