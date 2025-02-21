@@ -10,7 +10,7 @@ import HireMe from "../Hireme"
 import { BackgroundBeams } from '../BackgroundBeams'
 
 
-const jobTitles = ["UI/UX Designer", "Web Developer"]
+const jobTitles = ["UI/UX Designer", "Web Developer","App Developer"]
 
 const OrangeButton = styled(Button)(({ theme }) => ({
   backgroundColor: "#FD6F00",
