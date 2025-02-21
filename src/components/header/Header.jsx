@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Logo = () => (
-  <a href="#home" className="text-2xl font-bold uppercase text-white">
+  <a href="#home" className="text-3xl font-bold text-white hover:text-orange-400 transition-colors">
     Charan
   </a>
 );
 
 const NavItem = ({ href, isActive, children }) => (
-  <li className="w-full">
+  <li>
     <a
       href={href}
-      className={`block py-2 px-4 text-lg font-bold rounded-sm ${
-        isActive ? 'text-orange-400' : 'text-white hover:bg-orange-400'
-      } transition-colors`}
+      className={`relative px-4 py-2 text-base font-medium transition-colors ${
+        isActive 
+          ? 'text-orange-400' 
+          : 'text-gray-100 hover:text-orange-400'
+      }`}
     >
       {children}
+      {isActive && (
+        <motion.div
+          className="absolute bottom-0 left-0 h-0.5 w-full bg-orange-400"
+          layoutId="underline"
+        />
+      )}
     </a>
   </li>
 );
@@ -23,92 +32,126 @@ const NavItem = ({ href, isActive, children }) => (
 const DownloadButton = () => (
   <a
     href="https://drive.google.com/file/d/1iQt8jrrcDmIDp28tFzIIh0jsAROGhZh0/view?usp=sharing"
-    download
-    className="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded transition-colors text-center w-full md:w-auto font-bold font-2xl"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center px-6 py-2 text-base font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors duration-200"
   >
     Download CV
   </a>
 );
 
 const MobileMenu = ({ isOpen, onClose, activeSection }) => (
-  <div
-    className={`fixed inset-y-0 right-0 w-1/2 bg-[#1E1E1E] p-4 transform ${
-      isOpen ? 'translate-x-0' : 'translate-x-full'
-    } transition-transform duration-300 ease-in-out md:hidden z-50`}
+  <motion.div
+    initial={{ opacity: 0, x: '100%' }}
+    animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : '100%' }}
+    transition={{ duration: 0.2 }}
+    className="fixed inset-y-0 right-0 w-full sm:w-80 bg-[#1E1E1E] shadow-2xl p-6 z-50"
   >
-    <button onClick={onClose} className="absolute top-4 right-4 text-white z-50">
-      <X className="h-6 w-6" />
-      <span className="sr-only">Close menu</span>
+    <button onClick={onClose} className="absolute top-6 right-6 text-white">
+      <X className="h-7 w-7" />
     </button>
-    <nav className="flex flex-col gap-2 mt-12">
-      <ul className="space-y-2 list-none p-0">
-        <NavItem href="#home" isActive={activeSection === 'home'}>Home</NavItem>
-        <NavItem href="#about" isActive={activeSection === 'about'}>About</NavItem>
-        <NavItem href="#skills" isActive={activeSection === 'skills'}>Skills</NavItem>
-        <NavItem href="#services" isActive={activeSection === 'services'}>Services</NavItem>
-        <NavItem href="#projects" isActive={activeSection === 'projects'}>Projects</NavItem>
-        <NavItem href="#certificates" isActive={activeSection === 'certificates'}>Certificates</NavItem>
-        <NavItem href="#contact" isActive={activeSection === 'contact'}>Contact</NavItem>
+    <nav className="mt-16">
+      <ul className="space-y-6">
+        {['home', 'about', 'skills', 'projects', 'certificates', 'contact'].map((section) => (
+          <NavItem 
+            key={section} 
+            href={`#${section}`} 
+            isActive={activeSection === section}
+          >
+            <span className="text-lg">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
+          </NavItem>
+        ))}
       </ul>
-      <div className="mt-4">
+      <div className="mt-8">
         <DownloadButton />
       </div>
     </nav>
-  </div>
+  </motion.div>
 );
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'skills','services','projects', 'certificates', 'contact'];
-      const scrollPos = window.pageYOffset;
+    // Add scroll-padding to document when component mounts
+    document.documentElement.style.setProperty('scroll-padding-top', '100px');
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section && scrollPos >= section.offsetTop - 100) {
-          setActiveSection(sections[i]);
-          break;
+    const handleScroll = () => {
+      // Update header background
+      setIsScrolled(window.scrollY > 20);
+
+      // Update active section
+      const sections = ['home', 'about', 'skills', 'projects', 'certificates', 'contact'];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
         }
+        return false;
+      });
+      if (current) {
+        setActiveSection(current);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      // Clean up scroll-padding when component unmounts
+      document.documentElement.style.removeProperty('scroll-padding-top');
     };
   }, []);
 
   return (
-    <header className="bg-[#1E1E1E] text-white py-4 fixed top-0 w-full z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
+    <header 
+      className={`fixed top-0 w-full z-50 transition-all duration-200 ${
+        isScrolled ? 'bg-[#1E1E1E]/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-20 md:h-24">
           <Logo />
+          
           <nav className="hidden md:block">
-            <ul className="flex space-x-4 list-none">
-              <NavItem href="#home" isActive={activeSection === 'home'}>Home</NavItem>
-              <NavItem href="#about" isActive={activeSection === 'about'}>About</NavItem>
-              <NavItem href="#skills" isActive={activeSection === 'skills'}>Skills</NavItem>
-              <NavItem href="#services" isActive={activeSection === 'services'}>Services</NavItem>
-              <NavItem href="#projects" isActive={activeSection === 'projects'}>Projects</NavItem>
-              <NavItem href="#certificates" isActive={activeSection === 'certificates'}>Certificates</NavItem>
-              <NavItem href="#contact" isActive={activeSection === 'contact'}>Contact</NavItem>
+            <ul className="flex space-x-8 font-bold">
+              {['home', 'about', 'skills', 'projects', 'certificates', 'contact'].map((section) => (
+                <NavItem 
+                  key={section} 
+                  href={`#${section}`} 
+                  isActive={activeSection === section}
+                >
+                  <span className="text-base">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
+                </NavItem>
+              ))}
             </ul>
           </nav>
-          <div className="hidden md:block">
-            <DownloadButton />
+
+          <div className="flex items-center space-x-6">
+            <div className="hidden md:block">
+              <DownloadButton />
+            </div>
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="md:hidden text-white hover:text-orange-400 transition-colors"
+            >
+              <Menu className="h-7 w-7" />
+            </button>
           </div>
-          <button
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden text-white"
-          >
-            <Menu className="h-6 w-6" />
-            <span className="sr-only">Open menu</span>
-          </button>
         </div>
       </div>
+
+      {/* Mobile menu overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}

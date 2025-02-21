@@ -4,13 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import About from './components/about/About';
-import Service from './components/service/Service';
 import Skills from './components/skills/Skill';
 import Project from './components/projects/Project';
 import Certificates from './components/certificates/Certificates';
 import Contact from './components/contact/Contact';
 import Footer from './components/footer/Footer';
-import { BackgroundBeamsWithCollision } from './components/ui/background-beams-with-collision';
+import LoadingSpinner from './components/LoadingSpinner';
 
 const LoadingScreen = () => (
   <div className="fixed inset-0 bg-[#1E1E1E] flex items-center justify-center z-50">
@@ -56,20 +55,78 @@ const LoadingScreen = () => (
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    const checkServerAndResources = async () => {
+      try {
+        // Check server health
+        const healthCheck = await fetch('/api/health-check'); // Replace with your actual health check endpoint
+        if (!healthCheck.ok) throw new Error('Server not responding');
 
-    return () => clearTimeout(timer);
+        // Load essential resources
+        await Promise.all([
+          // Add your critical resources here
+          // Example: fetch('/api/user-data'),
+          // Example: fetch('/api/initial-content'),
+          new Promise(resolve => {
+            // Check if fonts are loaded
+            document.fonts.ready.then(() => resolve());
+          }),
+          // Add a small minimum delay to prevent flash
+          new Promise(resolve => setTimeout(resolve, 800))
+        ]);
+
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Loading error:', err);
+        setError(err.message);
+        // Optionally set isLoading to false if you want to show an error state
+        // setIsLoading(false);
+      }
+    };
+
+    checkServerAndResources();
   }, []);
+
+  if (error) {
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#1E1E1E',
+        color: '#FD6F00',
+        fontFamily: 'Poppins, sans-serif',
+        flexDirection: 'column',
+        gap: '20px'
+      }}>
+        <h2>Something went wrong</h2>
+        <p style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{error}</p>
+        <button 
+          onClick={() => window.location.reload()}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#FD6F00',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            cursor: 'pointer'
+          }}
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="relative bg-[#1E1E1E] min-h-screen overflow-hidden">
-      {/* Background Component */}
-      <BackgroundBeamsWithCollision className="fixed inset-0 z-0" />
-
       <AnimatePresence>
         {isLoading && <LoadingScreen />}
       </AnimatePresence>
@@ -78,14 +135,13 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="relative z-10 flex flex-col min-h-screen"
+          className="flex flex-col min-h-screen"
         >
           <Header />
           <main className="flex-1">
             <Home />
             <About />
             <Skills />
-            <Service />
             <Project />
             <Certificates />
             <Contact />
