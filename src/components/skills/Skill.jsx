@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import { SkillsBeams } from '../SkillsBeams';
 
 const skills = [
   { id: 1, 
@@ -107,38 +108,46 @@ const Skills = () => {
   }, [controls, inView, navClicked]);
 
   return (
-    <motion.div
-      id="skills"
-      ref={ref}
-      className="bg-[#1E1E1E] min-h-screen text-white flex flex-col items-center py-20"
-      variants={containerVariants}
-      initial="hidden"
-      animate={controls}
-    >
-      <motion.h1 
-        className="text-6xl md:text-7xl font-bold mb-14 text-white"
-        variants={itemVariants}
-      >
-        My <span className="text-orange-500">Skills</span>
-      </motion.h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 p-6">
-        {skills.map(skill => (
-          <motion.div
-            key={skill.id}
-            className="flex justify-center items-center"
+    <section id="skills" className="relative min-h-screen bg-[#1E1E1E] overflow-hidden">
+      {/* Background Effects */}
+      <SkillsBeams />
+
+      {/* Content Container */}
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        <motion.div
+          id="skills"
+          ref={ref}
+          className="text-white flex flex-col items-center py-20"
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          <motion.h1 
+            className="text-6xl md:text-7xl font-bold mb-14 text-white"
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
-            <img
-              src={skill.src}
-              alt={skill.alt}
-              className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-sm"
-            />
-          </motion.div>
-        ))}
+            My <span className="text-orange-500">Skills</span>
+          </motion.h1>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 p-6">
+            {skills.map(skill => (
+              <motion.div
+                key={skill.id}
+                className="flex justify-center items-center"
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img
+                  src={skill.src}
+                  alt={skill.alt}
+                  className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-sm"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
-    </motion.div>
+    </section>
   );
 };
 
