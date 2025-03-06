@@ -128,7 +128,7 @@ const Skills = () => {
           >
             My <span className="text-orange-500">Skills</span>
           </motion.h1>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 p-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 p-4">
             {skills.map(skill => (
               <motion.div
                 key={skill.id}
@@ -140,7 +140,7 @@ const Skills = () => {
                 <img
                   src={skill.src}
                   alt={skill.alt}
-                  className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-sm"
+                  className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg object-cover"
                 />
               </motion.div>
             ))}

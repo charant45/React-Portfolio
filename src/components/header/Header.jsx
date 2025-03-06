@@ -46,7 +46,7 @@ const MobileMenu = ({ isOpen, onClose, activeSection }) => (
     </button>
     <nav className="mt-16">
       <ul className="space-y-6">
-        {['home', 'about', 'skills', 'projects', 'certificates', 'contact'].map((section) => (
+        {['home', 'about', 'skills', 'projects', 'contact'].map((section) => (
           <NavItem 
             key={section} 
             href={`#${section}`} 
@@ -111,7 +111,7 @@ export default function Header() {
           
           <nav className="hidden md:block">
             <ul className="flex space-x-8 font-bold">
-              {['home', 'about', 'skills', 'projects', 'certificates', 'contact'].map((section) => (
+              {['home', 'about', 'skills', 'project', 'contact'].map((section) => (
                 <NavItem 
                   key={section} 
                   href={`#${section}`} 
