@@ -6,7 +6,6 @@ import Home from './components/home/Home';
 import About from './components/about/About';
 import Skills from './components/skills/Skill';
 import Project from './components/projects/Project';
-import Certificates from './components/certificates/Certificates';
 import Contact from './components/contact/Contact';
 import Footer from './components/footer/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -143,7 +142,6 @@ export default function App() {
             <About />
             <Skills />
             <Project />
-            <Certificates />
             <Contact />
           </main>
           <Footer />
